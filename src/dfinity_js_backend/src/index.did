@@ -1,0 +1,24 @@
+service: () -> {
+    addBus: (record {model:text; registration:text; capacity:nat64; driver:text}) -> (variant {Ok:record {id:text; model:text; registration:text; capacity:nat64; driver:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}});
+    addUser: (record {name:text; email:text; address:text; phone:text}) -> (variant {Ok:record {id:text; name:text; email:text; address:text; phone:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}});
+    createTicket: (record {userId:text; tripId:text}) -> (variant {Ok:record {id:text; to:text; cost:nat64; userId:text; date:text; from:text; tripId:text; time:text; busId:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}});
+    createTrip: (record {to:text; via:text; cost:nat64; date:text; from:text; time:text; busId:text}) -> (variant {Ok:record {id:text; to:text; via:text; cost:nat64; date:text; from:text; time:text; availableSeats:nat64; busId:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}});
+    deleteTicket: (text) -> (variant {Ok:record {id:text; to:text; cost:nat64; userId:text; date:text; from:text; tripId:text; time:text; busId:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}});
+    getBus: (text) -> (variant {Ok:record {id:text; model:text; registration:text; capacity:nat64; driver:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}}) query;
+    getBuses: () -> (vec record {id:text; model:text; registration:text; capacity:nat64; driver:text}) query;
+    getTicket: (text) -> (variant {Ok:record {id:text; to:text; cost:nat64; userId:text; date:text; from:text; tripId:text; time:text; busId:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}}) query;
+    getTickets: () -> (vec record {id:text; to:text; cost:nat64; userId:text; date:text; from:text; tripId:text; time:text; busId:text}) query;
+    getTicketsByBus: (text) -> (vec record {id:text; to:text; cost:nat64; userId:text; date:text; from:text; tripId:text; time:text; busId:text}) query;
+    getTicketsByTrip: (text) -> (vec record {id:text; to:text; cost:nat64; userId:text; date:text; from:text; tripId:text; time:text; busId:text}) query;
+    getTicketsByUser: (text) -> (vec record {id:text; to:text; cost:nat64; userId:text; date:text; from:text; tripId:text; time:text; busId:text}) query;
+    getTrip: (text) -> (variant {Ok:record {id:text; to:text; via:text; cost:nat64; date:text; from:text; time:text; availableSeats:nat64; busId:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}}) query;
+    getTrips: () -> (vec record {id:text; to:text; via:text; cost:nat64; date:text; from:text; time:text; availableSeats:nat64; busId:text}) query;
+    getUser: (text) -> (variant {Ok:record {id:text; name:text; email:text; address:text; phone:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}}) query;
+    getUsers: () -> (vec record {id:text; name:text; email:text; address:text; phone:text}) query;
+    searchBus: (text) -> (vec record {id:text; model:text; registration:text; capacity:nat64; driver:text}) query;
+    searchTrip: (text) -> (vec record {id:text; to:text; via:text; cost:nat64; date:text; from:text; time:text; availableSeats:nat64; busId:text}) query;
+    searchUser: (text) -> (vec record {id:text; name:text; email:text; address:text; phone:text}) query;
+    updateBus: (record {id:text; capacity:nat64; driver:text}) -> (variant {Ok:record {id:text; model:text; registration:text; capacity:nat64; driver:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}});
+    updateTrip: (record {id:text; to:text; via:text; cost:nat64; date:text; from:text; time:text; busId:text}) -> (variant {Ok:record {id:text; to:text; via:text; cost:nat64; date:text; from:text; time:text; availableSeats:nat64; busId:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}});
+    updateUser: (record {id:text; name:text; email:text; address:text; phone:text}) -> (variant {Ok:record {id:text; name:text; email:text; address:text; phone:text}; Err:variant {InsufficientBus:text; PaymentFailed:text; InvalidPayload:text; NotFound:text}});
+}
